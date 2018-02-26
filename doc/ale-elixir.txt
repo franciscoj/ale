@@ -16,6 +16,14 @@ g:ale_elixir_mix_options                             *g:ale_elixir_mix_options*
 ===============================================================================
 dialyxir                                                  *ale-elixir-dialyxir*
 
+g:ale_elixir_dialyxir_options                   *g:ale_elixir_dialyxir_options*
+                                                *b:ale_elixir_dialyxir_options*
+  Type: |String|
+  Default: `''`
+
+
+  This variable can be changed to specify the flags given to `mix dialyzer`
+
 Dialyzer, a DIscrepancy AnaLYZer for ERlang programs.
 http://erlang.org/doc/man/dialyzer.html
 
@@ -23,7 +31,8 @@ It can be used with elixir through dialyxir
 https://github.com/jeremyjh/dialyxir
 
 Options for dialyzer are not configurable by ale, but they are instead
-configured on your project's `mix.exs`.
+configured on your project's `mix.exs`. Options allowed by
+|g:ale_elixir_mix_options| are only for the comand line interface
 
 See https://github.com/jeremyjh/dialyxir#with-explaining-stuff for more
 information.
