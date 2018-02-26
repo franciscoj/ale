@@ -2,6 +2,14 @@
 " Description: Add dialyzer support for elixir through dialyxir
 " https://github.com/jeremyjh/dialyxir
 
+let g:ale_elixir_dialyxir_options =
+\   get(g:, 'ale_elixir_dialyxir_options', '')
+
+function! ale_linters#elixir#dialyxir#getCommand(buffer) abort
+  return 'mix dialyzer '
+        \ .ale#Var(a:buffer, 'elixir_dialyxir_options')
+endfunction
+
 function! ale_linters#elixir#dialyxir#Handle(buffer, lines) abort
     " Matches patterns line the following:
     "
@@ -28,7 +36,7 @@ endfunction
 call ale#linter#Define('elixir', {
 \   'name': 'dialyxir',
 \   'executable': 'mix',
-\   'command': 'mix dialyzer',
+\   'command_callback': 'ale_linters#elixir#dialyxir#getCommand',
 \   'callback': 'ale_linters#elixir#dialyxir#Handle',
 \})
 
